@@ -1,16 +1,21 @@
 ﻿using Business.Concrete;
 using DataAccess.Concrete.EntityFrameWork;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace ConsoleUI
+namespace ConsoleApp1
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-             ProductTest();
+            //Data Transformation Object
+            ProductTest();
+            //IoC
+            //CategoryTest();
+        }
+
+        private static void CategoryTest()
+        {
             CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
             foreach (var category in categoryManager.GetAll())
             {
@@ -18,17 +23,16 @@ namespace ConsoleUI
             }
         }
 
-        private static void ProductTest()
+        public static void ProductTest()
         {
             ProductManager productManager = new ProductManager(new EfProductDal());
 
-            foreach (var product in productManager.GetAll())
+            foreach (var product in productManager.GetProductDetails())
             {
-                Console.WriteLine(product.ProductName);
+                Console.WriteLine(product.ProductName+" " +product.CategoryName);
             }
-            
+
         }
     }
-}
-
+    }
 

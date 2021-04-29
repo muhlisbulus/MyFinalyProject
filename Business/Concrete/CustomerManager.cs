@@ -1,6 +1,8 @@
-﻿namespace Business.Concrete
+﻿using Business.Abstarct;
+
+namespace Business.Concrete
 {
-    public class CustomerManager
+    public class CustomerManager:ICustomerService
     {
     }
 }
